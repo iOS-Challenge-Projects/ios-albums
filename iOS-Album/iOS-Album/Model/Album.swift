@@ -23,13 +23,23 @@ struct Album: Codable {
         }
     }
     
-    let artist: String
-    let coverArt:  [URL]
-    let genres: [String]
-    let id: String
-    let name: String
-    let songs:  [Song]
+    var artist: String
+    var coverArt:  [URL]
+    var genres: [String]
+    var id: String
+    var name: String
+    var songs:  [Song]
     
+    init(artist: String, coverArt: [URL], genres: [String], name: String) {
+        self.id = UUID().uuidString
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.name = name
+        self.songs = []
+    }
+    
+    //MARK: - Codable
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         
@@ -114,9 +124,16 @@ struct Song: Codable {
         }
     }
     
-    let duration: String
-    let id: String
-    let name: String
+    var duration: String
+    var id: String
+    var name: String
+    
+    
+    init(duration: String, name: String) {
+        self.id = UUID().uuidString
+        self.duration = duration
+        self.name = name
+    }
     
     //The goal of implementing this initializer yourself is to avoid using nested structs
     init(from decoder: Decoder) throws {

@@ -17,7 +17,11 @@ class AlbumDetailTableTableViewController: UITableViewController {
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var urlArtTextField: UITextField!
     
+    //MARK: - Properties
     
+    var albumController: AlbumController?
+    
+    var album: Album?
     
     
 //MARK: - View Lifecycle
